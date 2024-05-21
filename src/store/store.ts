@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
+import companyCollectionReducer from "../features/companyCollection/companyCollectionSlice"; // Import companyCollectionReducer
 import { useDispatch } from "react-redux";
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    // other reducers here
+    companyCollection: companyCollectionReducer, // Add companyCollection reducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
