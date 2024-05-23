@@ -29,9 +29,12 @@ export const fetchCompanyInfo = () => async (dispatch: AppDispatch) => {
       short_name: doc.data().short_name,
       facebook_title: doc.data().facebook_title,
       background_carousel: doc.data().background_carousel,
+      shortName: doc.data().short_name,
+      about_images: doc.data().about_images,
     }));
 
     console.log("fetchdata", fetchdata);
+    console.log("fetchdata", typeof fetchdata[0].date_of_incorporation.seconds);
 
     // Dispatch action with fetched data as payload
     dispatch(updateCompanyCollection(fetchdata));

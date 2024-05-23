@@ -1,0 +1,128 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../../fonts/HelveticaNeueBold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+
+$white-color: #ffffff;
+$company-shortname-color: #99ffff;
+$border-about-section-content: #6698ca;
+$border_bottom_title: #003f7d;
+$button_background_color: #0054a6;
+
+.hero_section {
+  text-align: center;
+  padding-bottom: 50px;
+
+  .hero_section_company_name {
+    font-family: Philosopher;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 36px;
+    text-align: center;
+    color: $white-color;
+    margin: 1px;
+    padding-top: 32px;
+    text-transform: uppercase;
+  }
+
+  .hero_section_company_shortname {
+    font-family: Helvetica Neue;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 53.72px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $company-shortname-color;
+    margin: 10px 0;
+  }
+  .hero_section_company_dateofincorporation {
+    font-family: Helvetica Neue;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 36px;
+    color: $white-color;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .slider {
+    width: 500px; /* Thu nhỏ chiều rộng */
+    height: 300px; /* Thu nhỏ chiều cao */
+    max-width: 80%; /* Giới hạn chiều rộng tối đa */
+    max-height: 50vh; /* Giới hạn chiều cao tối đa */
+  }
+
+  img {
+    width: 377.06px;
+    height: 531.6px;
+    top: 0.17px;
+    left: 412.88px;
+    gap: 0px;
+    opacity: 0px;
+  }
+}
+
+.container {
+  .about_section {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .about_section_content {
+      .title {
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+      .border_bottom_title {
+        margin: 0;
+        border-bottom: 5px solid $border_bottom_title;
+        margin-right: 560px;
+      }
+      .content {
+        border-left: 3px solid $border-about-section-content;
+        padding-left: 10px;
+      }
+      .header {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 23.44px;
+        text-align: left;
+      }
+
+      .title {
+        font-family: Philosopher;
+        font-size: 44px;
+        font-weight: 700;
+        line-height: 49.28px;
+        text-align: left;
+      }
+    }
+
+    .image_gallery {
+      list-style: none;
+      position: relative;
+
+      .about_images_1 {
+        position: absolute;
+        top: 250px;
+        right: 25px; /* Adjust these values as needed */
+      }
+    }
+
+    .action_area {
+      button {
+        padding: 10px 20px;
+        color: $white-color;
+        background-color: $button_background_color;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+}

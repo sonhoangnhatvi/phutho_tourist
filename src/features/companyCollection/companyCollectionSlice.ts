@@ -19,6 +19,8 @@ interface CompanyCollectionState {
   short_name?: string;
   facebook_title?: string;
   background_carousel?: string;
+  shortName: string;
+  about_images?: string[];
 }
 
 const companyCollectionInitialState: CompanyCollectionState[] = [];
