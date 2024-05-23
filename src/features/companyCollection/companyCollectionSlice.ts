@@ -21,6 +21,7 @@ interface CompanyCollectionState {
   background_carousel?: string;
   shortName: string;
   about_images?: string[];
+  footer_copyright?: string;
 }
 
 const companyCollectionInitialState: CompanyCollectionState[] = [];

@@ -6,8 +6,6 @@ import {
 } from "../../Utils/helper";
 import { Timestamp } from "firebase/firestore";
 import classes from "./HomePage.module.scss";
-import { Carousel } from "react-responsive-carousel";
-import Slider from "react-slick";
 
 export const HomePage = () => {
   // Get the company data from the store
@@ -26,13 +24,6 @@ export const HomePage = () => {
     ? convertFirebaseTimestampToDate(companyDateOfIncorporation as Timestamp) // Optional type assertion
     : null;
 
-  const companyLogo = companyData.length > 0 ? companyData[0].logo : "";
-  const companyAddress = companyData.length > 0 ? companyData[0].address : "";
-  const companyPhone =
-    companyData.length > 0 ? companyData[0].phone_numbers : "";
-  const companyEmail = companyData.length > 0 ? companyData[0].email : "";
-  const companyDescription =
-    companyData.length > 0 ? companyData[0].description : "";
   const background_carousel =
     companyData.length > 0 ? companyData[0].background_carousel : "";
 

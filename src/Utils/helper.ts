@@ -10,7 +10,6 @@ export const convertFirebaseTimestampToDate = (timestamp: Timestamp | null) => {
 
   // Extract seconds and nanoseconds
   const seconds = timestamp.seconds;
-  const nanoseconds = timestamp.nanoseconds; // Default to 0 if not provided
 
   // Create a JavaScript Date object from seconds
   const date = new Date(seconds * 1000);

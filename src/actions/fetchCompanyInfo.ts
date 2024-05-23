@@ -31,6 +31,7 @@ export const fetchCompanyInfo = () => async (dispatch: AppDispatch) => {
       background_carousel: doc.data().background_carousel,
       shortName: doc.data().short_name,
       about_images: doc.data().about_images,
+      footer_copyright: doc.data().footer_copyright,
     }));
 
     console.log("fetchdata", fetchdata);

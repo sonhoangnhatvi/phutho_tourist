@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../../fonts/HelveticaNeueBold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+$white: #ffffff;
+$background: #002549cc;
+$company-shortname-color: #99ffff;
+
+.footer {
+  background-color: $background;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+
+  .companyInfo {
+    display: flex;
+    flex-direction: column;
+
+    .companyInforTop {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      justify-content: center;
+      align-items: center;
+      justify-content: flex-start;
+
+      .companyName {
+        padding: 10px;
+
+        .companyFullName {
+          text-transform: uppercase;
+          font-size: 15px;
+          color: $white;
+          margin: 0px;
+        }
+
+        .companyShortName {
+          font-family: Helvetica Neue;
+          font-size: 35px;
+          font-weight: 700;
+          line-height: 53.72px;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: $company-shortname-color;
+          margin: 0px;
+        }
+      }
+    }
+
+    .companyInforBottom {
+      justify-self: flex-end;
+      font-size: 14px;
+      color: $white;
+    }
+  }
+
+  .contact {
+    color: $white;
+  }
+}
