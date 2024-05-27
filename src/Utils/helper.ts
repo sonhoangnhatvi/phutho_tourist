@@ -36,3 +36,18 @@ export const removeWhitespaces = (str: string): string => {
 export const normalizeString = (str: string): string => {
   return removeWhitespaces(removeDiacritics(str));
 };
+
+interface Articles {
+  id: string;
+  author: string;
+  content: string;
+  publish_date: Date;
+  tags: number[];
+  title: string;
+  views: number;
+}
+
+// Ham lay danh sach 3 bai viet moi nhat
+export const getNewArticles = (articles: Articles[]) => {
+  return articles.slice(0, 3);
+};

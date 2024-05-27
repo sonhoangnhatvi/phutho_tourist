@@ -58,7 +58,9 @@ $nav-bar-tex-color: #99ffff;
 
   .main_header_item a:hover,
   .main_header_item a.active {
-    color: #ffeb3b;
+    color: $nav-bar-tex-color;
+    border-bottom: 1px solid $nav-bar-tex-color;
+    padding-bottom: 10px;
   }
 }
 

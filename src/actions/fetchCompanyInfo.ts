@@ -34,9 +34,6 @@ export const fetchCompanyInfo = () => async (dispatch: AppDispatch) => {
       footer_copyright: doc.data().footer_copyright,
     }));
 
-    console.log("fetchdata", fetchdata);
-    console.log("fetchdata", typeof fetchdata[0].date_of_incorporation.seconds);
-
     // Dispatch action with fetched data as payload
     dispatch(updateCompanyCollection(fetchdata));
   } catch (error) {

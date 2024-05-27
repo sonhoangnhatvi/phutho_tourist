@@ -1,0 +1,57 @@
+$key-service-container-padding: 16px;
+$white-color: #ffffff;
+$blue-primary-600: #003f7d;
+$gray-500: #666666;
+
+.key_service_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $key-service-container-padding; /* Gap between the cards */
+  justify-content: space-between; /* Ensure cards are spaced evenly */
+}
+
+.key_service {
+  background-color: $white-color;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1 1 30%; /* Adjust the percentage as needed for different numbers of cards per row */
+  display: flex;
+  flex-direction: column;
+  margin: $key-service-container-padding 0; /* Ensure vertical spacing between rows */
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .key_service_content {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    .key_service_title {
+      // styleName: Roboto/20px: Bold;
+      font-family: Roboto, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 23.44px;
+      color: $blue-primary-600;
+      margin: 10px 0 15px 0;
+    }
+
+    .key_service_content {
+      // styleName: Roboto/16px: Regular;
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      color: $gray-500;
+      margin: 5px 0 15px 0;
+      padding: 0;
+    }
+  }
+}

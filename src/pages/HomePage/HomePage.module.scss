@@ -6,12 +6,15 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
 
 $white-color: #ffffff;
 $company-shortname-color: #99ffff;
 $border-about-section-content: #6698ca;
-$border_bottom_title: #003f7d;
 $button_background_color: #0054a6;
+$new_article_section_background_color: #4e95dbb2;
+$-blue-primary-600: #003f7d;
+$-gray-600: #4d4d4d;
 
 .hero_section {
   text-align: center;
@@ -68,19 +71,24 @@ $button_background_color: #0054a6;
 }
 
 .container {
+  padding-left: 150px;
+  padding-right: 150px;
+
   .about_section {
-    padding: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     .about_section_content {
+      font-size: 20px;
+      padding: 40px;
       .title {
         margin-top: 20px;
         margin-bottom: 5px;
       }
       .border_bottom_title {
         margin: 0;
-        border-bottom: 5px solid $border_bottom_title;
-        margin-right: 560px;
+        border-bottom: 5px solid $-blue-primary-600;
+        display: block;
+        width: 200px;
       }
       .content {
         border-left: 3px solid $border-about-section-content;
@@ -110,8 +118,8 @@ $button_background_color: #0054a6;
 
       .about_images_1 {
         position: absolute;
-        top: 250px;
-        right: 500px; /* Adjust these values as needed */
+        left: 100px;
+        bottom: 0;
       }
     }
 
@@ -124,6 +132,113 @@ $button_background_color: #0054a6;
         font-weight: bold;
         cursor: pointer;
       }
+    }
+  }
+
+  .new_article_section {
+    background-color: $new_article_section_background_color;
+    text-align: center;
+    padding: 0 150px;
+
+    .subTitle {
+      //styleName: Roboto/20px: Medium;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 23.44px;
+      text-align: center;
+      color: $white-color;
+      padding-top: 50px;
+    }
+
+    .title {
+      font-family: Philosopher;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 49.28px;
+      text-align: center;
+      margin: 0;
+      color: $-blue-primary-600;
+    }
+
+    .border_bottom_title {
+      margin: 0 auto;
+      border-bottom: 5px solid $-blue-primary-600;
+      display: block;
+      width: 100px;
+    }
+
+    .content {
+      //styleName: Roboto/20px: Regular;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 23.44px;
+      text-align: center;
+      color: $white-color;
+    }
+
+    .article_list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      list-style: none;
+      gap: 20px;
+      padding: 0;
+      padding-bottom: 30px;
+    }
+  }
+
+  .key_service_section {
+    text-align: center;
+    padding: 0 150px;
+
+    .subTitle {
+      //styleName: Roboto/20px: Medium;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 23.44px;
+      text-align: center;
+      color: $-gray-600;
+      padding-top: 50px;
+    }
+
+    .title {
+      font-family: Philosopher;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 49.28px;
+      text-align: center;
+      margin: 0;
+      color: $-blue-primary-600;
+    }
+
+    .border_bottom_title {
+      margin: 0 auto;
+      border-bottom: 5px solid $-blue-primary-600;
+      display: block;
+      width: 200px;
+    }
+
+    .content {
+      //styleName: Roboto/20px: Regular;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 23.44px;
+      text-align: center;
+      color: $-gray-600;
+    }
+
+    .key_service_list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      list-style: none;
+      gap: 20px;
+      padding: 0;
+      padding-bottom: 30px;
     }
   }
 }

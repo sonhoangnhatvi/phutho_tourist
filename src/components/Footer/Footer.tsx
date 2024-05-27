@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 import { selectCompanyCollection } from "../../features/companyCollection/companyCollectionSlice";
 import { normalizeString } from "../../Utils/helper";
 import classes from "./Footer.module.scss";
+import { FaPhoneAlt, FaMapMarkerAlt, FaFacebookSquare } from "react-icons/fa";
+import { FaSquareEnvelope } from "react-icons/fa6";
 
 export const Footer = () => {
   // Get the company data from the store
@@ -44,14 +46,37 @@ export const Footer = () => {
       </div>
       {/* Second part */}
       <div className={classes.contact}>
-        <h3>LIÊN HỆ</h3>
-        <p>{companyAddress}</p>
-        <p>{companyPhoneNumbers}</p>
-        <p>{companyEmail}</p>
-        <p>{companyFacebookTitle}</p>
+        <p className={classes.contac_title}>LIÊN HỆ</p>
+        <p className={classes.contact_item}>
+          <FaMapMarkerAlt className={classes.contact_item_icon} />
+          {companyAddress}
+        </p>
+        <p className={classes.contact_item}>
+          <FaPhoneAlt className={classes.contact_item_icon} />
+          {companyPhoneNumbers}
+        </p>
+        <p className={classes.contact_item}>
+          <FaSquareEnvelope className={classes.contact_item_icon} />
+          {companyEmail}
+        </p>
+        <p className={classes.contact_item}>
+          <FaFacebookSquare className={classes.contact_item_icon} />
+          {companyFacebookTitle}
+        </p>
       </div>
       {/* Third part */}
-      <div></div>
+      <div className={classes.units_of_the_same_system}>
+        <p className={classes.units_of_the_same_system_title}>
+          CÁC ĐƠN VỊ CÙNG HỆ THỐNG PHUTHOTOURIST
+        </p>
+        <ul>
+          {companyUnitsOfTheSameSystem?.map((unit) => (
+            <li key={unit}>
+              <p>{unit}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

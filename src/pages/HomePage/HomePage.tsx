@@ -1,13 +1,19 @@
 import { useSelector } from "react-redux";
 import { selectCompanyCollection } from "../../features/companyCollection/companyCollectionSlice";
+import { selectArticlesCollection } from "../../features/articleCollection/articlesCollectionSlice";
 import {
   convertFirebaseTimestampToDate,
   normalizeString,
 } from "../../Utils/helper";
 import { Timestamp } from "firebase/firestore";
 import classes from "./HomePage.module.scss";
+import { Article } from "../../components/Article/Article";
+import { ArticleCollection } from "../../interface/ArticleCollection";
+import { selectkeyServiceCollection } from "../../features/keyServiceCollection/keyServiceCollectionSlice";
+import { KeyService } from "../../components/KeyService/KeyService";
 
 export const HomePage = () => {
+  // REGION collection company
   // Get the company data from the store
   const companyData = useSelector(selectCompanyCollection);
 
@@ -21,7 +27,7 @@ export const HomePage = () => {
       : null;
 
   const formattedDate = companyDateOfIncorporation
-    ? convertFirebaseTimestampToDate(companyDateOfIncorporation as Timestamp) // Optional type assertion
+    ? convertFirebaseTimestampToDate(companyDateOfIncorporation as Timestamp)
     : null;
 
   const background_carousel =
@@ -40,6 +46,19 @@ export const HomePage = () => {
     companyData.length > 0 ? companyData[0].about_images : [];
   const about_images_0 = about_images ? about_images[0] : "";
   const about_images_1 = about_images ? about_images[1] : "";
+  // End region collection company
+
+  // REGION collection Articles
+  // Get the company data from the store
+  const articlesData = useSelector(selectArticlesCollection);
+  console.log("articlesData", articlesData);
+  // End collection Articles
+
+  // REGION collection keyService
+  // Get the company data from the store
+  const keyServiceData = useSelector(selectkeyServiceCollection);
+  console.log("keyServiceData", keyServiceData);
+  // End collection keyService
 
   // Inline style for background image
   const heroSectionStyle = {
@@ -62,7 +81,7 @@ export const HomePage = () => {
         <img src={slideshow_images_0} alt="slideshow_images_0"></img>
       </div>
       <div className={classes.container}>
-        {/* Aboutection */}
+        {/* About section */}
         <div className={classes.about_section}>
           <div className={classes.about_section_content}>
             <p className={classes.header}>VỀ CHÚNG TÔI</p>
@@ -85,6 +104,9 @@ export const HomePage = () => {
                 ))}
               </ul>
             </div>
+            <div className={classes.action_area}>
+              <button>Xem chi tiết</button>
+            </div>
           </div>
           <ul className={classes.image_gallery}>
             <li>
@@ -100,9 +122,47 @@ export const HomePage = () => {
               ></img>
             </li>
           </ul>
-          <div className={classes.action_area}>
-            <button>Xem chi tiết</button>
-          </div>
+        </div>
+        {/* New Article section*/}
+        <div className={classes.new_article_section}>
+          <p className={classes.subTitle}>CHIA SẺ THÔNG TIN</p>
+          <p className={classes.title}>Bài viết mới</p>
+          <p className={classes.border_bottom_title}></p>
+          <p className={classes.content}>
+            Hãy cùng chúng tôi chia sẻ những bài viết mới với các thông tin về
+            những sản phẩm du lịch
+          </p>
+          <ul className={classes.article_list}>
+            {articlesData?.map((article) => {
+              return (
+                <li key={article.id}>
+                  <Article key={article.id} articleItem={article}></Article>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        {/* Key Service section*/}
+        <div className={classes.key_service_section}>
+          <p className={classes.subTitle}>LĨNH VỰC HOẠT ĐỘNG</p>
+          <p className={classes.title}>Các dịch vụ trọng tâm</p>
+          <p className={classes.border_bottom_title}></p>
+          <p className={classes.content}>
+            3 dịch vụ trọng tâm của Phuthotourist là vui chơi giải trí, nhà hàng
+            – khách sạn, và dịch vụ lữ hành
+          </p>
+          <ul className={classes.key_service_list}>
+            {keyServiceData?.map((keyService) => {
+              return (
+                <li key={keyService.id}>
+                  <KeyService
+                    key={keyService.id}
+                    keyServiceItem={keyService}
+                  ></KeyService>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
     </div>

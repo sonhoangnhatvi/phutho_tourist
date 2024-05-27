@@ -5,27 +5,24 @@
   font-style: normal;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+
 $white: #ffffff;
 $background: #002549cc;
 $company-shortname-color: #99ffff;
 
 .footer {
   background-color: $background;
-  padding: 50px;
+  padding: 30px 190px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 80px;
 
   .companyInfo {
-    display: flex;
-    flex-direction: column;
-
+    position: relative;
     .companyInforTop {
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      justify-content: center;
+      display: flex;
       align-items: center;
-      justify-content: flex-start;
 
       .companyName {
         padding: 10px;
@@ -51,13 +48,38 @@ $company-shortname-color: #99ffff;
     }
 
     .companyInforBottom {
-      justify-self: flex-end;
       font-size: 14px;
       color: $white;
+      position: absolute;
+      bottom: 0;
     }
   }
 
   .contact {
     color: $white;
+
+    .contac_title {
+      font-family: Philosopher;
+      font-size: 24px;
+    }
+
+    .contact_item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .contact_item_icon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .units_of_the_same_system {
+    color: $white;
+
+    .units_of_the_same_system_title {
+      font-family: Philosopher;
+      font-size: 24px;
+    }
   }
 }
