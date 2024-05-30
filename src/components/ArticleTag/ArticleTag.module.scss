@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../../fonts/HelveticaNeueBold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
+
+$white-color: #ffffff;
+$company-shortname-color: #99ffff;
+$border-about-section-content: #6698ca;
+$button_background_color: #0054a6;
+$new_article_section_background_color: #4e95dbb2;
+$-blue-primary-600: #003f7d;
+$-gray-600: #4d4d4d;
+$-primary-50: #e6eef7;
+
+.container {
+  .name {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.41px;
+    text-align: center;
+    color: $button_background_color;
+    background-color: $-primary-50;
+    padding: 5px 15px;
+    border-radius: 10px;
+  }
+}

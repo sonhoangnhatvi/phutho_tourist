@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../../fonts/HelveticaNeueBold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
+
+$white-color: #ffffff;
+$company-shortname-color: #99ffff;
+$border-about-section-content: #6698ca;
+$button_background_color: #0054a6;
+$new_article_section_background_color: #4e95dbb2;
+$-blue-primary-600: #003f7d;
+$-gray-600: #4d4d4d;
+
+.article_container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  margin-bottom: 50px;
+
+  --hero-height: 120vh; /* Định nghĩa biến CSS cho chiều cao của hero_section */
+  --margin-top-offset: 50px; /* Định nghĩa giá trị x */
+
+  .hero_section {
+    width: 100%; /* Ensure it takes the full width of the container */
+    height: var(
+      --hero-height
+    ); /* Sử dụng biến CSS cho chiều cao của hero_section */
+  }
+
+  .article_area {
+    flex: 1 0 auto;
+    width: 90%; /* Adjust as needed */
+    border-radius: 5px;
+    margin-top: calc(
+      (var(--hero-height) - var(--margin-top-offset)) * -1
+    ); /* Tính toán giá trị margin-top */
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a floating effect */
+
+    .article_title {
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: left;
+      color: $button_background_color;
+      margin: 5px 0px;
+    }
+
+    .article_title_sub {
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: left;
+      margin: 5px 0;
+    }
+
+    .article_img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .article_content {
+      margin-top: 20px;
+      white-space: pre-wrap; /* Preserve newlines and whitespace */
+    }
+  }
+
+  .after_hero_section {
+    width: 100%; /* Ensure it takes the full width of the container */
+    flex: 0 0 auto;
+  }
+}

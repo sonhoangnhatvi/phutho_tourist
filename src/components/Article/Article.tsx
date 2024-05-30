@@ -1,7 +1,14 @@
 import { ArticleCollection } from "../../interface/ArticleCollection";
 import classes from "./Article.module.scss";
-import { convertFirebaseTimestampToDate } from "../../Utils/helper";
+import {
+  convertFirebaseTimestampToDate,
+  getArticleTags,
+  truncateText,
+} from "../../Utils/helper";
 import { Timestamp } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { selectArticlesTagCollection } from "../../features/articleTagCollection/articlesTagCollectionSlice";
+import { ArticleTag } from "../ArticleTag/ArticleTag";
 
 // Modify Article component to receive props
 export const Article = ({
@@ -9,6 +16,16 @@ export const Article = ({
 }: {
   articleItem: ArticleCollection;
 }) => {
+  // REGION collection Articles
+  // Get the company data from the store
+  const articlesTagData = useSelector(selectArticlesTagCollection);
+
+  // End collection Articles
+
+  // Get Article Tag Array
+  const articleTags = getArticleTags(articleItem, articlesTagData);
+  console.log("articleTags", articleTags);
+
   const publish_date = articleItem.publish_date
     ? convertFirebaseTimestampToDate(articleItem.publish_date as Timestamp)
     : "";
@@ -22,7 +39,15 @@ export const Article = ({
           <span className={classes.dot}>•</span>
         </div>
         <p className={classes.article_title}>{articleItem.title}</p>
-        <p className={classes.article_content}>{articleItem.content}</p>
+        <p className={classes.article_content}>
+          {truncateText(articleItem.content, 20)}
+        </p>
+
+        <div className={classes.article_tags}>
+          {articleTags.map((tag) => {
+            return <ArticleTag name={tag} />;
+          })}
+        </div>
         <div className={classes.article_footer}>
           <p className={classes.views}>{articleItem.views / 1000}N lượt xem</p>
           <p className={classes.dot}>•</p>

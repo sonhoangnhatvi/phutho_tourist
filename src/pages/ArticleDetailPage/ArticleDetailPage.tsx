@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { selectArticlesCollection } from "../../features/articleCollection/articlesCollectionSlice";
 import { selectCompanyCollection } from "../../features/companyCollection/companyCollectionSlice";
-import classes from "./ArticlePage.module.scss";
+import classes from "./ArticleDetailPage.module.scss";
 import { convertFirebaseTimestampToDate } from "../../Utils/helper";
 import { Timestamp } from "firebase/firestore";
 
-export const ArticlePage = () => {
+export const ArticleDetailPage = () => {
   // Access the params object using useParams hook
   const { articleId } = useParams();
 
@@ -36,7 +36,23 @@ export const ArticlePage = () => {
 
   return (
     <div className={classes.article_container}>
-      <h1>This is Articla Page</h1>
+      <div className={classes.hero_section} style={heroSectionStyle} />
+      <div className={classes.article_area}>
+        <p className={classes.article_title}>{articleItem?.title}</p>
+        <p className={classes.article_title_sub}>
+          by {articleItem?.author} in on {publish_date}
+        </p>
+        <img
+          className={classes.article_img}
+          src={articleItem?.img}
+          alt="article_img"
+        ></img>
+        <div
+          className={classes.article_content}
+          dangerouslySetInnerHTML={{ __html: articleItem?.content ?? "" }}
+        />
+      </div>
+      <div className={classes.after_hero_section} />
     </div>
   );
 };

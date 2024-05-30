@@ -7,7 +7,7 @@ export interface ArticleCollection {
     nanoseconds: number;
   };
 
-  tags: string[];
+  tags: number[];
   title: string;
   views: number;
   img: string;

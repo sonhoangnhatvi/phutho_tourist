@@ -14,6 +14,7 @@ import HorizontalCarousel from "../../components/HorizontalCarousel/HorizontalCa
 import { useEffect, useState } from "react";
 import TravelLoading from "../../components/TravelLoading/TravelLoading";
 import { FaAnglesDown } from "react-icons/fa6";
+import { selectArticlesTagCollection } from "../../features/articleTagCollection/articlesTagCollectionSlice";
 
 export const HomePage = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -61,6 +62,12 @@ export const HomePage = () => {
   const keyServiceData = useSelector(selectkeyServiceCollection);
   console.log("keyServiceData", keyServiceData);
   // End collection keyService
+
+  // REGION collection Articles
+  // Get the company data from the store
+  const articlesTagData = useSelector(selectArticlesTagCollection);
+  console.log("articlesTagData", articlesTagData);
+  // End collection Articles
 
   // Inline style for background image
   const heroSectionStyle = {

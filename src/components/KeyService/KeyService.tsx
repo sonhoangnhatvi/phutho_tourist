@@ -1,3 +1,4 @@
+import { truncateText } from "../../Utils/helper";
 import { KeyServiceCollection } from "../../interface/KeyServiceCollection";
 import classes from "./KeyService.module.scss";
 
@@ -15,7 +16,7 @@ export const KeyService = ({
           {keyServiceItem.key_service_name}
         </p>
         <p className={classes.key_service_content}>
-          {keyServiceItem.key_service_content}
+          {truncateText(keyServiceItem.key_service_content, 20)}
         </p>
       </div>
     </div>

@@ -69,6 +69,7 @@ const HorizontalCarousel = () => {
           <SwiperSlide
             className={classes.swiperSlide}
             onClick={() => handleClickArticle(articleItem)}
+            key={articleItem.id}
           >
             <div className={classes.imageContainer}>
               <img

@@ -57,6 +57,13 @@ $-gray-400: #858585;
       padding-left: 0;
     }
 
+    .article_tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
     .article_footer {
       display: flex;
       gap: 10px;

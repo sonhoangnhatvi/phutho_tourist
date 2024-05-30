@@ -19,7 +19,7 @@ $-gray-600: #4d4d4d;
 .hero_section {
   text-align: center;
   padding-bottom: 50px;
-  height: 65vh;
+  height: 120vh;
 
   .hero_section_company_name {
     font-family: Philosopher;
@@ -159,6 +159,7 @@ $-gray-600: #4d4d4d;
       line-height: 49.28px;
       text-align: center;
       margin: 0;
+      margin-top: 10px;
       color: $-blue-primary-600;
     }
 
@@ -177,6 +178,7 @@ $-gray-600: #4d4d4d;
       line-height: 23.44px;
       text-align: center;
       color: $white-color;
+      margin: 20px 0;
     }
 
     .article_list {
@@ -213,6 +215,8 @@ $-gray-600: #4d4d4d;
       text-align: center;
       margin: 0;
       color: $-blue-primary-600;
+      margin: 0;
+      margin-top: 10px;
     }
 
     .border_bottom_title {
@@ -230,6 +234,7 @@ $-gray-600: #4d4d4d;
       line-height: 23.44px;
       text-align: center;
       color: $-gray-600;
+      margin: 20px 0;
     }
 
     .key_service_list {

@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import companyCollectionReducer from "../features/companyCollection/companyCollectionSlice"; // Import companyCollectionReducer
 import articlesCollectionReducer from "../features/articleCollection/articlesCollectionSlice"; // Import companyCollectionReducer
 import keyServiceCollectionReducer from "../features/keyServiceCollection/keyServiceCollectionSlice";
+import articlesTagCollectionReducer from "../features/articleTagCollection/articlesTagCollectionSlice";
 import { useDispatch } from "react-redux";
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     companyCollection: companyCollectionReducer,
     articlesCollection: articlesCollectionReducer,
     keyServiceCollection: keyServiceCollectionReducer,
+    articlesTagCollection: articlesTagCollectionReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

@@ -6,6 +6,7 @@ import { ArticlePage } from "./pages/ArticlePage/ArticlePage";
 import { DocumentPage } from "./pages/DocumentPage/DocumentPage";
 import { RecruitmentPage } from "./pages/RecruitmentPage/RecruitmentPage";
 import Error404 from "./pages/Error404/Error404";
+import { ArticleDetailPage } from "./pages/ArticleDetailPage/ArticleDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/article/:articleId", // Specific route for product details
-        element: <ArticlePage />, // Example component for product details
+        element: <ArticleDetailPage />, // Example component for product details
       },
       {
         path: "/article", // Specific route for product details

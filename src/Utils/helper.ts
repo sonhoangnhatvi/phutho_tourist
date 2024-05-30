@@ -1,6 +1,9 @@
 // src/utils.ts
 
 import { Timestamp } from "firebase/firestore"; // Import Timestamp type
+import { ArticleItem } from "../interface/ArticleItem";
+import { ArticleCollection } from "../interface/ArticleCollection";
+import { ArticleTagCollection } from "../interface/ArticleTagCollection";
 
 export const convertFirebaseTimestampToDate = (
   timestamp: Timestamp | null,
@@ -63,17 +66,52 @@ export const normalizeString = (str: string): string => {
   return removeWhitespaces(removeDiacritics(str));
 };
 
-interface Articles {
-  id: string;
-  author: string;
-  content: string;
-  publish_date: Date;
-  tags: number[];
-  title: string;
-  views: number;
+// Ham lay danh sach 3 bai viet moi nhat
+export const getNewArticles = (articles: ArticleItem[]) => {
+  return articles.slice(0, 3);
+};
+
+// Get articleTags
+// Function to get array of article_tag_name from ArticleTagCollection based on tags array in ArticleCollection
+export function getArticleTags(
+  articleCollection: ArticleCollection,
+  articleTagCollection: ArticleTagCollection[]
+): string[] {
+  const articleTags: string[] = [];
+
+  // console.log(
+  //   "articleCollection.tags[0]",
+  //   typeof articleCollection.tags[0],
+  //   articleCollection.tags[0]
+  // );
+
+  // console.log(
+  //   "articleTagCollection.tags[0]",
+  //   typeof articleTagCollection[0].id,
+  //   articleTagCollection[0].id
+  // );
+
+  // Iterate through tags array in each ArticleCollection item
+  articleCollection.tags.forEach((tag) => {
+    // Find corresponding article_tag_name from ArticleTagCollection
+    const articleTag = articleTagCollection.find(
+      (tagItem) => parseInt(tagItem.id) === tag
+    );
+    // If articleTag is found, add its name to articleTags array
+    if (articleTag) {
+      articleTags.push(articleTag.article_tag_name);
+    }
+  });
+  return articleTags;
 }
 
-// Ham lay danh sach 3 bai viet moi nhat
-export const getNewArticles = (articles: Articles[]) => {
-  return articles.slice(0, 3);
+export const truncateText = (text: string, maxWords: number): string => {
+  const words = text.split(" ");
+
+  if (words.length <= maxWords) {
+    return text;
+  }
+
+  const truncatedText = words.slice(0, maxWords).join(" ") + "...";
+  return truncatedText;
 };
