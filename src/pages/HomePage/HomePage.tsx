@@ -8,11 +8,15 @@ import {
 import { Timestamp } from "firebase/firestore";
 import classes from "./HomePage.module.scss";
 import { Article } from "../../components/Article/Article";
-import { ArticleCollection } from "../../interface/ArticleCollection";
 import { selectkeyServiceCollection } from "../../features/keyServiceCollection/keyServiceCollectionSlice";
 import { KeyService } from "../../components/KeyService/KeyService";
+import HorizontalCarousel from "../../components/HorizontalCarousel/HorizontalCarousel";
+import { useEffect, useState } from "react";
+import TravelLoading from "../../components/TravelLoading/TravelLoading";
+import { FaAnglesDown } from "react-icons/fa6";
 
 export const HomePage = () => {
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   // REGION collection company
   // Get the company data from the store
   const companyData = useSelector(selectCompanyCollection);
@@ -35,8 +39,6 @@ export const HomePage = () => {
 
   const slideshow_images =
     companyData.length > 0 ? companyData[0].slideshow_images : [];
-
-  const slideshow_images_0 = slideshow_images ? slideshow_images[0] : "";
 
   const tourism_products =
     companyData.length > 0 ? companyData[0].tourism_products : [];
@@ -67,104 +69,142 @@ export const HomePage = () => {
     backgroundPosition: "center", // Adjust this as needed
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading delay (replace with actual data fetching if needed)
+
+  useEffect(() => {
+    if (
+      companyData.length > 0 &&
+      articlesData.length > 0 &&
+      keyServiceData.length > 0
+    ) {
+      setIsDataLoaded(true);
+    }
+  }, [companyData, articlesData, keyServiceData]);
+
+  const scrollToSection = () => {
+    const section = document.querySelector(`.${classes.about_section}`);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div>
-      {/* Hero section */}
-      <div className={classes.hero_section} style={heroSectionStyle}>
-        <p className={classes.hero_section_company_name}>{companyName}</p>
-        <p className={classes.hero_section_company_shortname}>
-          {companyShortName}
-        </p>
-        <p className={classes.hero_section_company_dateofincorporation}>
-          Ngày thành lập {formattedDate}
-        </p>
-        <img src={slideshow_images_0} alt="slideshow_images_0"></img>
-      </div>
-      <div className={classes.container}>
-        {/* About section */}
-        <div className={classes.about_section}>
-          <div className={classes.about_section_content}>
-            <p className={classes.header}>VỀ CHÚNG TÔI</p>
-            <p className={classes.title}>
-              Chúng tôi cung cấp dịch vụ du lịch đáp ứng mọi nhu cầu của bạn!
+      {!isDataLoaded ? (
+        <TravelLoading />
+      ) : (
+        <div>
+          {/* Hero section */}
+          <div className={classes.hero_section} style={heroSectionStyle}>
+            <p className={classes.hero_section_company_name}>{companyName}</p>
+            <p className={classes.hero_section_company_shortname}>
+              {companyShortName}
             </p>
-            <p className={classes.border_bottom_title}></p>
-            <div className={classes.content}>
-              <p className={classes.content_p}>
-                Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist), là một
-                đơn vị thành viên của Saigontourist. Phuthotourist được biết đến
-                với các sản phẩm du lịch nổi tiếng tại TP.HCM (Quận 11) như:
-              </p>
-              <ul>
-                {/* Use an unordered list for tourism products */}
-                {tourism_products?.map((product, index) => (
-                  <li key={index}>
-                    {product} {/* Assuming 'name' property exists in product */}
-                  </li>
-                ))}
+            <p className={classes.hero_section_company_dateofincorporation}>
+              Ngày thành lập {formattedDate}
+            </p>
+            <HorizontalCarousel />
+            <FaAnglesDown
+              style={{
+                fontSize: "30px",
+                filter: "drop-shadow(0 0 0px black)",
+                color: "white",
+              }}
+              onClick={scrollToSection}
+            />
+          </div>
+          <div className={classes.container}>
+            {/* About section */}
+            <div className={classes.about_section}>
+              <div className={classes.about_section_content}>
+                <p className={classes.header}>VỀ CHÚNG TÔI</p>
+                <p className={classes.title}>
+                  Chúng tôi cung cấp dịch vụ du lịch đáp ứng mọi nhu cầu của
+                  bạn!
+                </p>
+                <p className={classes.border_bottom_title}></p>
+                <div className={classes.content}>
+                  <p className={classes.content_p}>
+                    Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist), là
+                    một đơn vị thành viên của Saigontourist. Phuthotourist được
+                    biết đến với các sản phẩm du lịch nổi tiếng tại TP.HCM (Quận
+                    11) như:
+                  </p>
+                  <ul>
+                    {/* Use an unordered list for tourism products */}
+                    {tourism_products?.map((product, index) => (
+                      <li key={index}>
+                        {product}{" "}
+                        {/* Assuming 'name' property exists in product */}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className={classes.action_area}>
+                  <button>Xem chi tiết</button>
+                </div>
+              </div>
+              <ul className={classes.image_gallery}>
+                <li>
+                  <img
+                    className={classes.about_images_0}
+                    src={about_images_0}
+                    alt="about_images_0"
+                  ></img>
+                  <img
+                    className={classes.about_images_1}
+                    src={about_images_1}
+                    alt="about_images_1"
+                  ></img>
+                </li>
               </ul>
             </div>
-            <div className={classes.action_area}>
-              <button>Xem chi tiết</button>
+            {/* New Article section*/}
+            <div className={classes.new_article_section}>
+              <p className={classes.subTitle}>CHIA SẺ THÔNG TIN</p>
+              <p className={classes.title}>Bài viết mới</p>
+              <p className={classes.border_bottom_title}></p>
+              <p className={classes.content}>
+                Hãy cùng chúng tôi chia sẻ những bài viết mới với các thông tin
+                về những sản phẩm du lịch
+              </p>
+              <ul className={classes.article_list}>
+                {articlesData?.map((article) => {
+                  return (
+                    <li key={article.id}>
+                      <Article key={article.id} articleItem={article}></Article>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            {/* Key Service section*/}
+            <div className={classes.key_service_section}>
+              <p className={classes.subTitle}>LĨNH VỰC HOẠT ĐỘNG</p>
+              <p className={classes.title}>Các dịch vụ trọng tâm</p>
+              <p className={classes.border_bottom_title}></p>
+              <p className={classes.content}>
+                3 dịch vụ trọng tâm của Phuthotourist là vui chơi giải trí, nhà
+                hàng – khách sạn, và dịch vụ lữ hành
+              </p>
+              <ul className={classes.key_service_list}>
+                {keyServiceData?.map((keyService) => {
+                  return (
+                    <li key={keyService.id}>
+                      <KeyService
+                        key={keyService.id}
+                        keyServiceItem={keyService}
+                      ></KeyService>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
-          <ul className={classes.image_gallery}>
-            <li>
-              <img
-                className={classes.about_images_0}
-                src={about_images_0}
-                alt="about_images_0"
-              ></img>
-              <img
-                className={classes.about_images_1}
-                src={about_images_1}
-                alt="about_images_1"
-              ></img>
-            </li>
-          </ul>
         </div>
-        {/* New Article section*/}
-        <div className={classes.new_article_section}>
-          <p className={classes.subTitle}>CHIA SẺ THÔNG TIN</p>
-          <p className={classes.title}>Bài viết mới</p>
-          <p className={classes.border_bottom_title}></p>
-          <p className={classes.content}>
-            Hãy cùng chúng tôi chia sẻ những bài viết mới với các thông tin về
-            những sản phẩm du lịch
-          </p>
-          <ul className={classes.article_list}>
-            {articlesData?.map((article) => {
-              return (
-                <li key={article.id}>
-                  <Article key={article.id} articleItem={article}></Article>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        {/* Key Service section*/}
-        <div className={classes.key_service_section}>
-          <p className={classes.subTitle}>LĨNH VỰC HOẠT ĐỘNG</p>
-          <p className={classes.title}>Các dịch vụ trọng tâm</p>
-          <p className={classes.border_bottom_title}></p>
-          <p className={classes.content}>
-            3 dịch vụ trọng tâm của Phuthotourist là vui chơi giải trí, nhà hàng
-            – khách sạn, và dịch vụ lữ hành
-          </p>
-          <ul className={classes.key_service_list}>
-            {keyServiceData?.map((keyService) => {
-              return (
-                <li key={keyService.id}>
-                  <KeyService
-                    key={keyService.id}
-                    keyServiceItem={keyService}
-                  ></KeyService>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

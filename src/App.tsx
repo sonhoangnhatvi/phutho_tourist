@@ -17,9 +17,14 @@ const router = createBrowserRouter([
         element: <HomePage />, // Example component for product details
       },
       {
+        path: "/article/:articleId", // Specific route for product details
+        element: <ArticlePage />, // Example component for product details
+      },
+      {
         path: "/article", // Specific route for product details
         element: <ArticlePage />, // Example component for product details
       },
+
       {
         path: "/document",
         element: <DocumentPage />,

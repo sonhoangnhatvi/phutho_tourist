@@ -2,7 +2,10 @@
 
 import { Timestamp } from "firebase/firestore"; // Import Timestamp type
 
-export const convertFirebaseTimestampToDate = (timestamp: Timestamp | null) => {
+export const convertFirebaseTimestampToDate = (
+  timestamp: Timestamp | null,
+  format: "formatddmmyyyy" | "format_monthname_dd_yyyy" = "formatddmmyyyy"
+) => {
   // Check for null or invalid timestamp
   if (!timestamp || !timestamp.seconds) {
     return null; // Handle invalid timestamps gracefully
@@ -14,12 +17,35 @@ export const convertFirebaseTimestampToDate = (timestamp: Timestamp | null) => {
   // Create a JavaScript Date object from seconds
   const date = new Date(seconds * 1000);
 
-  // Format the date as dd/mm/yyyy with leading zeros
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
-  const year = date.getFullYear();
-
-  return `${day}/${month}/${year}`;
+  if (format === "formatddmmyyyy") {
+    // Format the date as "dd/mm/yyyy"
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  } else if (format === "format_monthname_dd_yyyy") {
+    // Format the date as "Tháng Một 01, 2019"
+    const monthNames = [
+      "Tháng Một",
+      "Tháng Hai",
+      "Tháng Ba",
+      "Tháng Tư",
+      "Tháng Năm",
+      "Tháng Sáu",
+      "Tháng Bảy",
+      "Tháng Tám",
+      "Tháng Chín",
+      "Tháng Mười",
+      "Tháng Mười Một",
+      "Tháng Mười Hai",
+    ];
+    const day = String(date.getDate()).padStart(2, "0");
+    const monthName = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+    return `${monthName} ${day}, ${year}`;
+  } else {
+    throw new Error("Invalid format specified");
+  }
 };
 
 // Hàm loại bỏ dấu (diacritics)

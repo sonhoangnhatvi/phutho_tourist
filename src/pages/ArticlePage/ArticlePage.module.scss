@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../../fonts/HelveticaNeueBold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Philosopher&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
+
+$white-color: #ffffff;
+$company-shortname-color: #99ffff;
+$border-about-section-content: #6698ca;
+$button_background_color: #0054a6;
+$new_article_section_background_color: #4e95dbb2;
+$-blue-primary-600: #003f7d;
+$-gray-600: #4d4d4d;
+
+.article_container {
+  position: relative;
+
+  .hero_section {
+    height: 65vh;
+  }
+
+  .article_area {
+    border-radius: 5px;
+    top: 10px;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 20px 30px;
+
+    .article_title {
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 700;
+      text-align: left;
+      color: $button_background_color;
+      margin: 5px 0px;
+    }
+
+    .article_title_sub {
+      //styleName: Roboto/16px: Regular;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 21px;
+      text-align: left;
+      margin: 5px 0;
+    }
+
+    .article_img {
+      width: 100%;
+      height: 300px;
+      border-radius: 5px;
+    }
+  }
+}
