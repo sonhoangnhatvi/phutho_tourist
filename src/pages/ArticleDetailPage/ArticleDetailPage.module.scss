@@ -71,6 +71,22 @@ $-gray-600: #4d4d4d;
       margin-top: 20px;
       white-space: pre-wrap; /* Preserve newlines and whitespace */
     }
+
+    .related_articles_title {
+      font-family: Roboto;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 36px;
+      text-align: left;
+      color: $button_background_color;
+      margin-top: 10px;
+    }
+
+    .related_articles_list {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
   }
 
   .after_hero_section {

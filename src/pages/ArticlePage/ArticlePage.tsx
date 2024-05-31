@@ -36,7 +36,16 @@ export const ArticlePage = () => {
 
   return (
     <div className={classes.article_container}>
-      <h1>This is Articla Page</h1>
+      <div className={classes.hero_section} style={heroSectionStyle} />
+      <div className={classes.hexagon}>
+        <span className={classes.text}>BÀI VIẾT</span>
+      </div>
+      <div className={classes.article_area}>
+        <div className={classes.article_carousel_area}></div>
+        <div className={classes.latest_article_area}></div>
+      </div>
+
+      <div className={classes.after_hero_section} />
     </div>
   );
 };

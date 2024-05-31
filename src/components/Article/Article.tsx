@@ -1,4 +1,4 @@
-import { ArticleCollection } from "../../interface/ArticleCollection";
+import { ArticleItem } from "../../interface/ArticleItem";
 import classes from "./Article.module.scss";
 import {
   convertFirebaseTimestampToDate,
@@ -11,11 +11,7 @@ import { selectArticlesTagCollection } from "../../features/articleTagCollection
 import { ArticleTag } from "../ArticleTag/ArticleTag";
 
 // Modify Article component to receive props
-export const Article = ({
-  articleItem,
-}: {
-  articleItem: ArticleCollection;
-}) => {
+export const Article = ({ articleItem }: { articleItem: ArticleItem }) => {
   // REGION collection Articles
   // Get the company data from the store
   const articlesTagData = useSelector(selectArticlesTagCollection);
@@ -45,7 +41,7 @@ export const Article = ({
 
         <div className={classes.article_tags}>
           {articleTags.map((tag) => {
-            return <ArticleTag name={tag} />;
+            return <ArticleTag name={tag.toString()} />;
           })}
         </div>
         <div className={classes.article_footer}>

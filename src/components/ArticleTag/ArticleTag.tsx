@@ -1,7 +1,11 @@
-import { ArticleTagIF } from "../../interface/ArticleTagIF";
+import React from "react";
 import classes from "./ArticleTag.module.scss";
 
-export const ArticleTag = ({ name }: ArticleTagIF) => {
+interface ArticleTagProps {
+  name: string;
+}
+
+export const ArticleTag: React.FC<ArticleTagProps> = ({ name }) => {
   return (
     <div className={classes.container}>
       <p className={classes.name}>{name}</p>

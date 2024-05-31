@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import classes from "./HorizontalCarousel.module.scss";
-import { ArticleCollection } from "../../interface/ArticleCollection";
+import { ArticleItem } from "../../interface/ArticleItem";
 
 import slide_image_1 from "../../assets/images/img_2.jpg";
 import slide_image_2 from "../../assets/images/img_2.jpg";
@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 // Define a custom hook to handle navigation
 const useHandleClickArticle = () => {
   const navigate = useNavigate();
-  const handleClickArticle = (articleItem: ArticleCollection) => {
+  const handleClickArticle = (articleItem: ArticleItem) => {
     const articleId = articleItem.id;
     console.log("Slide clicked:", articleId);
     navigate(`/article/${articleId}`);

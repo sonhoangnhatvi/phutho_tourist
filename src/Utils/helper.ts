@@ -2,8 +2,7 @@
 
 import { Timestamp } from "firebase/firestore"; // Import Timestamp type
 import { ArticleItem } from "../interface/ArticleItem";
-import { ArticleCollection } from "../interface/ArticleCollection";
-import { ArticleTagCollection } from "../interface/ArticleTagCollection";
+import { ArticleTagCollection } from "../interface/ArticleTag";
 
 export const convertFirebaseTimestampToDate = (
   timestamp: Timestamp | null,
@@ -66,15 +65,42 @@ export const normalizeString = (str: string): string => {
   return removeWhitespaces(removeDiacritics(str));
 };
 
-// Ham lay danh sach 3 bai viet moi nhat
-export const getNewArticles = (articles: ArticleItem[]) => {
-  return articles.slice(0, 3);
+// REGION : Ham lay danh sach viet moi nhat
+// Function to compare two publish_date objects
+const comparePublishDate = (
+  a?: { seconds: number; nanoseconds: number },
+  b?: { seconds: number; nanoseconds: number }
+): number => {
+  if (!a && !b) return 0;
+  if (!a) return 1;
+  if (!b) return -1;
+
+  if (a.seconds !== b.seconds) {
+    return a.seconds - b.seconds;
+  }
+  return a.nanoseconds - b.nanoseconds;
 };
+
+// Function to sort articles
+const sortArticlesByPublishDate = (articles: ArticleItem[]): ArticleItem[] => {
+  return articles.sort((a, b) => {
+    return comparePublishDate(a.publish_date, b.publish_date);
+  });
+};
+
+export const getNewArticles = (
+  articles: ArticleItem[],
+  numberOfArticles: number
+) => {
+  return sortArticlesByPublishDate(articles).slice(0, numberOfArticles);
+};
+
+// END REGION
 
 // Get articleTags
 // Function to get array of article_tag_name from ArticleTagCollection based on tags array in ArticleCollection
 export function getArticleTags(
-  articleCollection: ArticleCollection,
+  articleItem: ArticleItem,
   articleTagCollection: ArticleTagCollection[]
 ): string[] {
   const articleTags: string[] = [];
@@ -92,7 +118,7 @@ export function getArticleTags(
   // );
 
   // Iterate through tags array in each ArticleCollection item
-  articleCollection.tags.forEach((tag) => {
+  articleItem.tags.forEach((tag) => {
     // Find corresponding article_tag_name from ArticleTagCollection
     const articleTag = articleTagCollection.find(
       (tagItem) => parseInt(tagItem.id) === tag
@@ -105,6 +131,7 @@ export function getArticleTags(
   return articleTags;
 }
 
+// Get truncateText
 export const truncateText = (text: string, maxWords: number): string => {
   const words = text.split(" ");
 
@@ -114,4 +141,16 @@ export const truncateText = (text: string, maxWords: number): string => {
 
   const truncatedText = words.slice(0, maxWords).join(" ") + "...";
   return truncatedText;
+};
+
+// Get Related articles
+export const relatedArticles = (
+  articles: ArticleItem[],
+  articleTags: ArticleTagCollection[]
+): ArticleItem[] => {
+  const tagIds = articleTags.map((tag) => parseInt(tag.id, 10));
+
+  return articles.filter((article) =>
+    article.tags.some((tag) => tagIds.includes(tag))
+  );
 };

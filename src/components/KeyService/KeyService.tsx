@@ -1,5 +1,5 @@
 import { truncateText } from "../../Utils/helper";
-import { KeyServiceCollection } from "../../interface/KeyServiceCollection";
+import { KeyServiceCollection } from "../../interface/KeyServiceItem";
 import classes from "./KeyService.module.scss";
 
 // Modify Article component to receive props

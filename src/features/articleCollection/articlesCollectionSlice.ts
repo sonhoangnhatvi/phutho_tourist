@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import { ArticleCollection } from "../../interface/ArticleCollection";
+import { ArticleItem } from "../../interface/ArticleItem";
 
-const articleCollectionInitialState: ArticleCollection[] = [];
+const articleCollectionInitialState: ArticleItem[] = [];
 
 const articlesCollectionSlice = createSlice({
   name: "articleCollection",

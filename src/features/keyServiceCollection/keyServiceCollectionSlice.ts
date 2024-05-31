@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import { KeyServiceCollection } from "../../interface/KeyServiceCollection";
+import { KeyServiceCollection } from "../../interface/KeyServiceItem";
 
 const keyServiceCollectionInitialState: KeyServiceCollection[] = [];
 

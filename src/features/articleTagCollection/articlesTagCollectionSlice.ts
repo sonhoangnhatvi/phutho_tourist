@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import { ArticleTagCollection } from "../../interface/ArticleTagCollection";
+import { ArticleTagCollection } from "../../interface/ArticleTag";
 
 const articleTagCollectionInitialState: ArticleTagCollection[] = [];
 

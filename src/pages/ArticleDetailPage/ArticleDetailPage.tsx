@@ -3,16 +3,28 @@ import { useParams } from "react-router-dom";
 import { selectArticlesCollection } from "../../features/articleCollection/articlesCollectionSlice";
 import { selectCompanyCollection } from "../../features/companyCollection/companyCollectionSlice";
 import classes from "./ArticleDetailPage.module.scss";
-import { convertFirebaseTimestampToDate } from "../../Utils/helper";
+import {
+  convertFirebaseTimestampToDate,
+  getArticleTags,
+  relatedArticles,
+} from "../../Utils/helper";
 import { Timestamp } from "firebase/firestore";
+import { selectArticlesTagCollection } from "../../features/articleTagCollection/articlesTagCollectionSlice";
+import { Article } from "../../components/Article/Article";
 
 export const ArticleDetailPage = () => {
   // Access the params object using useParams hook
   const { articleId } = useParams();
 
-  // Get the company data from the store
+  // Get the article data from the store
   const articlesData = useSelector(selectArticlesCollection);
   const articleItem = articlesData.find((article) => article.id === articleId);
+
+  // Get the Articles Tags data from the store
+  const articlesTagData = useSelector(selectArticlesTagCollection);
+
+  // Get Related articles
+  const relatedArticleArray = relatedArticles(articlesData, articlesTagData);
 
   const publish_date = articleItem?.publish_date
     ? convertFirebaseTimestampToDate(
@@ -51,6 +63,14 @@ export const ArticleDetailPage = () => {
           className={classes.article_content}
           dangerouslySetInnerHTML={{ __html: articleItem?.content ?? "" }}
         />
+        <p className={classes.related_articles_title}>Bài viết liên quan</p>
+        <ul className={classes.related_articles_list}>
+          {relatedArticleArray.map((articleItem) => {
+            return (
+              <Article key={articleItem.id} articleItem={articleItem}></Article>
+            );
+          })}
+        </ul>
       </div>
       <div className={classes.after_hero_section} />
     </div>

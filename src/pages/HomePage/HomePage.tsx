@@ -63,11 +63,11 @@ export const HomePage = () => {
   console.log("keyServiceData", keyServiceData);
   // End collection keyService
 
-  // REGION collection Articles
+  // REGION collection Articles Tags
   // Get the company data from the store
   const articlesTagData = useSelector(selectArticlesTagCollection);
   console.log("articlesTagData", articlesTagData);
-  // End collection Articles
+  // End collection Articles Tags
 
   // Inline style for background image
   const heroSectionStyle = {
