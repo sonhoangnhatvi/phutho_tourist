@@ -13,10 +13,10 @@ $company-shortname-color: #99ffff;
 
 .footer {
   background-color: $background;
-  padding: 30px 190px;
+  padding: 30px 100px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 80px;
+  gap: 50px;
 
   .companyInfo {
     position: relative;
@@ -29,20 +29,21 @@ $company-shortname-color: #99ffff;
 
         .companyFullName {
           text-transform: uppercase;
-          font-size: 15px;
+          font-size: 12px;
           color: $white;
           margin: 0px;
+          line-height: 20px;
         }
 
         .companyShortName {
           font-family: Helvetica Neue;
-          font-size: 35px;
+          font-size: 20px;
           font-weight: 700;
-          line-height: 53.72px;
           letter-spacing: 0.04em;
           text-transform: uppercase;
           color: $company-shortname-color;
           margin: 0px;
+          line-height: 20px;
         }
       }
     }
@@ -60,13 +61,16 @@ $company-shortname-color: #99ffff;
 
     .contac_title {
       font-family: Philosopher;
-      font-size: 24px;
+      font-size: 20px;
+      line-height: 30px;
     }
 
     .contact_item {
+      font-size: 12px;
       display: flex;
       align-items: center;
       gap: 5px;
+      line-height: 30px;
 
       .contact_item_icon {
         font-size: 20px;
@@ -79,7 +83,13 @@ $company-shortname-color: #99ffff;
 
     .units_of_the_same_system_title {
       font-family: Philosopher;
-      font-size: 24px;
+      font-size: 20px;
+      line-height: 30px;
+    }
+
+    .companyUnitsOfTheSameSystemItem {
+      line-height: 30px;
+      font-size: 15px;
     }
   }
 }

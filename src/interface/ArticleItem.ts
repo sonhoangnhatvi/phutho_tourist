@@ -11,4 +11,5 @@ export interface ArticleItem {
   title: string;
   views: number;
   img: string;
+  img_vertical_carousel: string;
 }

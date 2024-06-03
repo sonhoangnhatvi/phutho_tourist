@@ -3,6 +3,7 @@ import { selectCompanyCollection } from "../../features/companyCollection/compan
 import { selectArticlesCollection } from "../../features/articleCollection/articlesCollectionSlice";
 import {
   convertFirebaseTimestampToDate,
+  getNewArticles,
   normalizeString,
 } from "../../Utils/helper";
 import { Timestamp } from "firebase/firestore";
@@ -53,7 +54,7 @@ export const HomePage = () => {
 
   // REGION collection Articles
   // Get the company data from the store
-  const articlesData = useSelector(selectArticlesCollection);
+  let articlesData = useSelector(selectArticlesCollection);
   console.log("articlesData", articlesData);
   // End collection Articles
 
@@ -143,8 +144,7 @@ export const HomePage = () => {
                     {/* Use an unordered list for tourism products */}
                     {tourism_products?.map((product, index) => (
                       <li key={index}>
-                        {product}{" "}
-                        {/* Assuming 'name' property exists in product */}
+                        <p className={classes.product}>{product}</p>
                       </li>
                     ))}
                   </ul>
@@ -178,7 +178,7 @@ export const HomePage = () => {
                 về những sản phẩm du lịch
               </p>
               <ul className={classes.article_list}>
-                {articlesData?.map((article) => {
+                {getNewArticles(articlesData, 3)?.map((article) => {
                   return (
                     <li key={article.id}>
                       <Article key={article.id} articleItem={article}></Article>

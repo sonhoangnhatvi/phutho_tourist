@@ -72,7 +72,7 @@ export const Footer = () => {
         <ul>
           {companyUnitsOfTheSameSystem?.map((unit) => (
             <li key={unit}>
-              <p>{unit}</p>
+              <p className={classes.companyUnitsOfTheSameSystemItem}>{unit}</p>
             </li>
           ))}
         </ul>

@@ -35,10 +35,11 @@ $nav-bar-tex-color: #99ffff;
   .main_header_item_list {
     list-style: none;
     margin: 0;
-    padding: 12px;
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
   }
 
   .main_header_item {

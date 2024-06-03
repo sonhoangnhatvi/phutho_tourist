@@ -1,0 +1,96 @@
+$white-color: #ffffff;
+$company-shortname-color: #99ffff;
+$border-about-section-content: #6698ca;
+$button_background_color: #0054a6;
+$new_article_section_background_color: #4e95dbb2;
+$-blue-primary-600: #003f7d;
+$-gray-600: #4d4d4d;
+
+.swiperSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; // Đảm bảo swiperSlide chiếm toàn bộ chiều cao của Swiper
+
+  --title-height: 60px;
+  --content-height: 60px;
+
+  .imageContainer {
+    display: flex;
+    flex-direction: column; // Chia imageContainer thành hai phần theo chiều dọc
+    width: 100%;
+    height: 100%; // Chiếm toàn bộ chiều cao của slide
+
+    img {
+      width: 100%; // Chiếm toàn bộ chiều rộng của container
+      height: auto; // Duy trì tỷ lệ gốc của ảnh
+      max-height: calc(
+        100% - (var(--title-height) + var(--content-height))
+      ); // Đảm bảo ảnh không vượt quá chiều cao của container trừ đi chiều cao của tiêu đề
+      object-fit: cover; // Đảm bảo hình ảnh vừa vặn trong không gian mà không bị méo
+      border-radius: 5px;
+    }
+
+    .article_content {
+      padding: 0px 10px;
+      max-width: 80%;
+
+      .title {
+        width: 100%; // Chiếm toàn bộ chiều rộng của container
+        height: var(--title-height); // Chiều cao cố định cho tiêu đề
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        font-family: Philosopher;
+        font-size: 18px;
+        font-weight: 700;
+        text-align: left;
+        color: $button_background_color;
+      }
+
+      .content {
+        width: 100%;
+        height: var(--content-height);
+      }
+    }
+  }
+}
+
+.swiperSlide {
+  width: 100% !important;
+  margin: 0px !important  ;
+  height: 400px !important; // Giảm chiều cao trên màn hình lớn
+}
+
+.sliderControler {
+  background-color: red;
+}
+
+.swiperButtonPrev {
+  margin-left: 90%;
+  margin-top: 10%;
+}
+
+.swiperButtonNext {
+  margin-top: 10%;
+}
+
+.swiperButtonPrev:after,
+.swiperButtonNext:after {
+  font-size: 15px;
+}
+
+/* Swiper Pagination */
+
+.swiperPagination {
+  text-align: right;
+  padding-right: 10px;
+}
+
+.swiperPagination .swiper-pagination-bullet {
+  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+}
+
+.swiperPagination .swiper-pagination-bullet-active {
+  background-color: $-blue-primary-600;
+}

@@ -19,42 +19,47 @@ $-gray-600: #4d4d4d;
 .article_container {
   position: relative;
   flex-direction: column;
-  align-items: center; /* Center content horizontally */
+  align-items: center;
   margin-bottom: 50px;
 
-  --hero-height: 120vh; /* Định nghĩa biến CSS cho chiều cao của hero_section */
-  --margin-top-offset: 50px; /* Định nghĩa giá trị x */
-  --hexagon-height: 100px;
+  --hero-height: 120vh;
+  --margin-top-offset: 50px;
+  --hexagon-height: 50px;
+  --hexagon-width: 200px;
   --hexagon-position-top: 50px;
 
   .hero_section {
-    width: 100%; /* Ensure it takes the full width of the container */
-    height: var(
-      --hero-height
-    ); /* Sử dụng biến CSS cho chiều cao của hero_section */
+    width: 100%;
+    height: var(--hero-height);
   }
 
-  .hexagon {
+  .hexagon_container {
     position: absolute;
     top: var(--hexagon-position-top);
     left: 50%;
-    transform: translateX(-50%); /* Center horizontally using transform */
-    width: 200px; /* Adjust width as needed */
-    height: var(--hexagon-height); /* Adjust height as needed */
-    background: #ffffff; /* Adjust background color as needed */
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Optional: subtle border */
+    transform: translateX(-50%);
+    width: var(--hexagon-width);
+    height: var(--hexagon-height);
+  }
 
-    .text {
-      font-family: "Arial", sans-serif; /* Adjust font as needed */
-      font-size: 24px; /* Adjust font size as needed */
-      color: #0f0f9f; /* Adjust text color as needed */
-      font-weight: bold; /* Make the text bold */
-    }
+  .hexagon {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hexagon_border {
+    fill: rgba(255, 255, 255, 0.7);
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 2;
+  }
+
+  .text {
+    font-family: "Philosopher", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 80px;
+    text-align: center;
+    color: $button_background_color !important; // Sử dụng !important để kiểm tra
   }
 
   .article_area {
@@ -67,21 +72,35 @@ $-gray-600: #4d4d4d;
     right: 150px;
 
     .article_carousel_area {
+      width: 100%; // Chiếm 100% chiều rộng của cột grid
       border-radius: 5px;
       background-color: rgba(255, 255, 255, 0.85);
-      padding: 20px 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a floating effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .latest_article_area {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       border-radius: 5px;
       background-color: rgba(255, 255, 255, 0.85);
-      padding: 20px 30px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for a floating effect */
+      padding: 20px 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-height: 400px; /* Adjust the height as needed */
+      overflow-y: auto;
+
+      .latest_article_area_title {
+        //styleName: Roboto/24px: Bold;
+        font-family: Roboto;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: left;
+        color: $button_background_color;
+      }
     }
   }
 
   .after_hero_section {
-    width: 100%; /* Ensure it takes the full width of the container */
+    width: 100%;
   }
 }

@@ -7,6 +7,8 @@ import { DocumentPage } from "./pages/DocumentPage/DocumentPage";
 import { RecruitmentPage } from "./pages/RecruitmentPage/RecruitmentPage";
 import Error404 from "./pages/Error404/Error404";
 import { ArticleDetailPage } from "./pages/ArticleDetailPage/ArticleDetailPage";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const router = createBrowserRouter([
   {

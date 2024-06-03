@@ -23,6 +23,7 @@ export const fetchArticles = () => async (dispatch: AppDispatch) => {
       title: doc.data().title,
       views: doc.data().views,
       img: doc.data().img,
+      img_vertical_carousel: doc.data().img_vertical_carousel,
     }));
 
     // Dispatch action with fetched data as payload

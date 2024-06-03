@@ -36,21 +36,18 @@ $gray-500: #666666;
     .key_service_title {
       // styleName: Roboto/20px: Bold;
       font-family: Roboto, sans-serif;
-      font-size: 20px;
+      font-size: 12px;
       font-weight: 700;
-      line-height: 23.44px;
       color: $blue-primary-600;
-      margin: 10px 0 15px 0;
     }
 
     .key_service_content {
       // styleName: Roboto/16px: Regular;
       font-family: Roboto, sans-serif;
-      font-size: 16px;
+      font-size: 10px;
       font-weight: 400;
-      line-height: 21px;
       color: $gray-500;
-      margin: 5px 0 15px 0;
+      margin: 5px 0 5px 0;
       padding: 0;
     }
   }

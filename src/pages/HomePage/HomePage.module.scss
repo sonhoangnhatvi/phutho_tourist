@@ -19,7 +19,6 @@ $-gray-600: #4d4d4d;
 .hero_section {
   text-align: center;
   padding-bottom: 50px;
-  height: 120vh;
 
   .hero_section_company_name {
     font-family: Philosopher;
@@ -72,44 +71,50 @@ $-gray-600: #4d4d4d;
 }
 
 .container {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 100px;
+  padding-right: 100px;
 
   .about_section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 15px;
+
     .about_section_content {
-      font-size: 20px;
+      font-size: 10px;
       padding: 40px;
+
       .title {
         margin-top: 20px;
         margin-bottom: 5px;
       }
       .border_bottom_title {
         margin: 0;
-        border-bottom: 5px solid $-blue-primary-600;
+        margin-bottom: 10px;
+        border-bottom: 3px solid $-blue-primary-600;
         display: block;
-        width: 200px;
+        width: 50px;
       }
       .content {
         border-left: 3px solid $border-about-section-content;
         padding-left: 10px;
+        margin-bottom: 10px;
       }
       .header {
         font-family: "Roboto", sans-serif;
         font-style: normal;
-        font-size: 20px;
+        font-size: 10px;
         font-weight: 600;
-        line-height: 23.44px;
         text-align: left;
       }
 
       .title {
         font-family: Philosopher;
-        font-size: 44px;
+        font-size: 16px;
         font-weight: 700;
-        line-height: 49.28px;
         text-align: left;
+        color: $button_background_color;
+        margin: 0;
+        margin-top: 10px;
       }
     }
 
@@ -117,10 +122,16 @@ $-gray-600: #4d4d4d;
       list-style: none;
       position: relative;
 
+      img {
+        width: 100%; /* Hình ảnh sẽ chiếm toàn bộ chiều rộng của cột */
+        height: auto; /* Đảm bảo tỷ lệ khung hình được duy trì */
+        display: block; /* Loại bỏ các khoảng trắng dư thừa */
+      }
+
       .about_images_1 {
         position: absolute;
-        left: 100px;
-        bottom: 0;
+        bottom: 10px;
+        left: 50px;
       }
     }
 
@@ -132,6 +143,7 @@ $-gray-600: #4d4d4d;
         border-radius: 5px;
         font-weight: bold;
         cursor: pointer;
+        font-size: 10px;
       }
     }
   }
@@ -139,24 +151,22 @@ $-gray-600: #4d4d4d;
   .new_article_section {
     background-color: $new_article_section_background_color;
     text-align: center;
-    padding: 0 150px;
+    padding: 0 20px;
 
     .subTitle {
       //styleName: Roboto/20px: Medium;
       font-family: Roboto;
-      font-size: 20px;
+      font-size: 12px;
       font-weight: 600;
-      line-height: 23.44px;
       text-align: center;
       color: $white-color;
-      padding-top: 50px;
+      padding-top: 20px;
     }
 
     .title {
       font-family: Philosopher;
-      font-size: 44px;
+      font-size: 24px;
       font-weight: 700;
-      line-height: 49.28px;
       text-align: center;
       margin: 0;
       margin-top: 10px;
@@ -165,17 +175,16 @@ $-gray-600: #4d4d4d;
 
     .border_bottom_title {
       margin: 0 auto;
-      border-bottom: 5px solid $-blue-primary-600;
+      border-bottom: 3px solid $-blue-primary-600;
       display: block;
-      width: 100px;
+      width: 60px;
     }
 
     .content {
       //styleName: Roboto/20px: Regular;
       font-family: Roboto;
-      font-size: 20px;
+      font-size: 12px;
       font-weight: normal;
-      line-height: 23.44px;
       text-align: center;
       color: $white-color;
       margin: 20px 0;
@@ -183,25 +192,23 @@ $-gray-600: #4d4d4d;
 
     .article_list {
       display: grid;
+      grid-auto-rows: max-content;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 1fr;
-      list-style: none;
       gap: 20px;
-      padding: 0;
-      padding-bottom: 30px;
+      padding: 0 30px;
+      padding-bottom: 40px;
     }
   }
 
   .key_service_section {
     text-align: center;
-    padding: 0 150px;
+    padding: 0 100px;
 
     .subTitle {
       //styleName: Roboto/20px: Medium;
       font-family: Roboto;
-      font-size: 20px;
+      font-size: 10px;
       font-weight: 600;
-      line-height: 23.44px;
       text-align: center;
       color: $-gray-600;
       padding-top: 50px;
@@ -209,9 +216,8 @@ $-gray-600: #4d4d4d;
 
     .title {
       font-family: Philosopher;
-      font-size: 44px;
+      font-size: 24px;
       font-weight: 700;
-      line-height: 49.28px;
       text-align: center;
       margin: 0;
       color: $-blue-primary-600;
@@ -221,20 +227,19 @@ $-gray-600: #4d4d4d;
 
     .border_bottom_title {
       margin: 0 auto;
-      border-bottom: 5px solid $-blue-primary-600;
+      border-bottom: 3px solid $-blue-primary-600;
       display: block;
-      width: 200px;
+      width: 100px;
     }
 
     .content {
       //styleName: Roboto/20px: Regular;
       font-family: Roboto;
-      font-size: 20px;
+      font-size: 10px;
       font-weight: normal;
-      line-height: 23.44px;
       text-align: center;
       color: $-gray-600;
-      margin: 20px 0;
+      margin: 10px 0;
     }
 
     .key_service_list {

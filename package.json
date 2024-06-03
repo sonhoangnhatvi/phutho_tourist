@@ -12,8 +12,12 @@
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.3.0",
     "@types/redux-thunk": "^2.1.0",
+    "@types/styled-components": "^5.1.34",
+    "@types/swiper": "^6.0.0",
+    "dompurify": "^3.1.5",
     "firebase": "^10.12.0",
     "font-awesome": "^4.7.0",
+    "marked": "^12.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
@@ -24,7 +28,9 @@
     "react-slick": "^0.30.2",
     "react-spring": "^9.7.3",
     "redux-thunk": "^3.1.0",
-    "swiper": "^11.1.3",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^6.1.11",
+    "swiper": "^11.1.4",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -53,6 +59,7 @@
     ]
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/react-slick": "^0.23.13",
     "sass": "^1.77.2",
     "sass-loader": "^14.2.1"

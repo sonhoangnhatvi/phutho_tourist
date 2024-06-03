@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { selectArticlesCollection } from "../../features/articleCollection/articlesCollectionSlice";
 import { selectCompanyCollection } from "../../features/companyCollection/companyCollectionSlice";
 import classes from "./ArticleDetailPage.module.scss";
@@ -11,10 +11,30 @@ import {
 import { Timestamp } from "firebase/firestore";
 import { selectArticlesTagCollection } from "../../features/articleTagCollection/articlesTagCollectionSlice";
 import { Article } from "../../components/Article/Article";
+import { marked } from "marked";
+import { ArticleItem } from "../../interface/ArticleItem";
+import { useEffect } from "react";
+
+// Define a custom hook to handle navigation
+const useHandleClickArticle = () => {
+  const navigate = useNavigate();
+  const handleClickArticle = (articleItem: ArticleItem) => {
+    const articleId = articleItem.id;
+    console.log("Slide clicked:", articleId);
+    navigate(`/article/${articleId}`);
+  };
+
+  return handleClickArticle;
+};
 
 export const ArticleDetailPage = () => {
   // Access the params object using useParams hook
   const { articleId } = useParams();
+
+  // Scroll to the top of the page when articleId changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [articleId]);
 
   // Get the article data from the store
   const articlesData = useSelector(selectArticlesCollection);
@@ -46,6 +66,9 @@ export const ArticleDetailPage = () => {
     backgroundPosition: "center", // Adjust this as needed
   };
 
+  // Handle click on articles
+  const handleClickArticle = useHandleClickArticle();
+
   return (
     <div className={classes.article_container}>
       <div className={classes.hero_section} style={heroSectionStyle} />
@@ -61,13 +84,20 @@ export const ArticleDetailPage = () => {
         ></img>
         <div
           className={classes.article_content}
-          dangerouslySetInnerHTML={{ __html: articleItem?.content ?? "" }}
+          dangerouslySetInnerHTML={{
+            __html: marked(articleItem?.content ?? "").toString(),
+          }}
         />
         <p className={classes.related_articles_title}>Bài viết liên quan</p>
         <ul className={classes.related_articles_list}>
           {relatedArticleArray.map((articleItem) => {
             return (
-              <Article key={articleItem.id} articleItem={articleItem}></Article>
+              <li onClick={() => handleClickArticle(articleItem)}>
+                <Article
+                  key={articleItem.id}
+                  articleItem={articleItem}
+                ></Article>
+              </li>
             );
           })}
         </ul>

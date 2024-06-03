@@ -1,5 +1,5 @@
 import { ArticleItem } from "../../interface/ArticleItem";
-import classes from "./Article.module.scss";
+import classes from "./ArticleVertical.module.scss";
 import {
   convertFirebaseTimestampToDate,
   getArticleTags,
@@ -14,7 +14,11 @@ import { marked } from "marked";
 import DOMPurify from "dompurify";
 
 // Modify Article component to receive props
-export const Article = ({ articleItem }: { articleItem: ArticleItem }) => {
+export const ArticleVertical = ({
+  articleItem,
+}: {
+  articleItem: ArticleItem;
+}) => {
   // REGION collection Articles
   // Get the company data from the store
   const articlesTagData = useSelector(selectArticlesTagCollection);
@@ -40,11 +44,7 @@ export const Article = ({ articleItem }: { articleItem: ArticleItem }) => {
         src={articleItem.img}
         alt="articleItem_img"
       ></img>
-      <div className={classes.article_content}>
-        <div className={classes.author}>
-          <p className={classes.author_name}>{articleItem.author}</p>
-          <span className={classes.dot}>•</span>
-        </div>
+      <div className={classes.article_content_area}>
         <p className={classes.article_title}>{articleItem.title}</p>
         <div
           className={classes.article_content}
@@ -53,11 +53,6 @@ export const Article = ({ articleItem }: { articleItem: ArticleItem }) => {
           }}
         ></div>
 
-        <div className={classes.article_tags}>
-          {articleTags.map((tag) => {
-            return <ArticleTag key={tag.toString()} name={tag.toString()} />;
-          })}
-        </div>
         <div className={classes.article_footer}>
           <p className={classes.views}>{articleItem.views / 1000}N lượt xem</p>
           <p className={classes.dot}>•</p>

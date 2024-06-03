@@ -3,6 +3,7 @@
 import { Timestamp } from "firebase/firestore"; // Import Timestamp type
 import { ArticleItem } from "../interface/ArticleItem";
 import { ArticleTagCollection } from "../interface/ArticleTag";
+import DOMPurify from "dompurify";
 
 export const convertFirebaseTimestampToDate = (
   timestamp: Timestamp | null,
@@ -83,8 +84,12 @@ const comparePublishDate = (
 
 // Function to sort articles
 const sortArticlesByPublishDate = (articles: ArticleItem[]): ArticleItem[] => {
-  return articles.sort((a, b) => {
-    return comparePublishDate(a.publish_date, b.publish_date);
+  // Tạo một bản sao của mảng articles
+  const articlesCopy = [...articles];
+
+  // Sắp xếp bản sao của mảng articles
+  return articlesCopy.sort((a, b) => {
+    return comparePublishDate(b.publish_date, a.publish_date);
   });
 };
 
@@ -153,4 +158,10 @@ export const relatedArticles = (
   return articles.filter((article) =>
     article.tags.some((tag) => tagIds.includes(tag))
   );
+};
+
+// Function to strip HTML tags and convert text to lowercase
+export const stripHtmlTags = (html: string) => {
+  const cleanHtml = DOMPurify.sanitize(html, { ALLOWED_TAGS: [] });
+  return cleanHtml.toLowerCase();
 };
